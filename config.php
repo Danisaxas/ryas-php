@@ -1,16 +1,14 @@
 <?php
-$host = "localhost"; // Servidor de MySQL
-$user = "root"; // Usuario de MySQL en Navicat
-$pass = "Dan1906"; // Contraseña de MySQL en Navicat
-$dbname = "login_system"; // Base de datos dentro de la conexión "users"
+$host = "127.0.0.1"; // O usa "localhost"
+$user = "root"; // Usuario de MySQL
+$pass = "Dan1906"; // Tu contraseña de MySQL
+$dbname = "login_system"; // Nombre de la base de datos
 
-// Crear conexión con MySQL
+// Conexión a la base de datos
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// Verificar conexión
+// Verificar si la conexión fue exitosa
 if ($conn->connect_error) {
-    die("❌ Error de conexión: " . $conn->connect_error);
-} else {
-    echo "✅ Conexión exitosa a la base de datos";
+    die("Error de conexión: " . $conn->connect_error);
 }
 ?>
