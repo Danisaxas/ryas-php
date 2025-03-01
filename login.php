@@ -1,50 +1,47 @@
 <?php
-include 'config.php'; // Incluir la conexión a la base de datos
+include("config.php"); // Incluir la conexión
 
-// Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Buscar el usuario en la base de datos
-    $sql = "SELECT * FROM users WHERE email='$email'";
-    $result = $conn->query($sql);
+    // Validar los campos
+    if (empty($email) || empty($password)) {
+        echo "Por favor, rellene todos los campos.";
+        exit();
+    }
+
+    // Verificar si el correo existe
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // El usuario existe, verificar la contraseña
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            echo "Bienvenido, " . $row['username'];
+        $user = $result->fetch_assoc();
+        
+        // Verificar la contraseña
+        if (password_verify($password, $user['password'])) {
+            // Autenticación exitosa, redirigir al dashboard
+            echo "Bienvenido, " . $user['username'] . "!";
+            // Aquí puedes redirigir a otra página (ej. dashboard.php)
         } else {
-            echo "Contraseña incorrecta";
+            echo "Contraseña incorrecta.";
         }
     } else {
-        echo "Usuario no encontrado";
+        echo "No se encontró un usuario con ese correo electrónico.";
     }
 }
-
-$conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+<!-- Formulario de inicio de sesión -->
+<form method="POST" action="login.php">
+    <label for="email">Correo electrónico:</label>
+    <input type="email" name="email" id="email" required><br>
 
-<h2>Formulario de Login</h2>
-<form action="login.php" method="post">
-    <label for="email">Correo electrónico:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+    <label for="password">Contraseña:</label>
+    <input type="password" name="password" id="password" required><br>
 
-    <label for="password">Contraseña:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
-
-    <input type="submit" value="Iniciar sesión">
+    <button type="submit">Iniciar sesión</button>
 </form>
-
-</body>
-</html>
