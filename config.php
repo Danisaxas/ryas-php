@@ -1,14 +1,16 @@
 <?php
-// Crear la conexión usando mysqli
-$conexion = new mysqli("localhost", "root", "Dan1906", "login_system", 3306);
+$host = "localhost";  // Servidor MySQL (XAMPP usa localhost)
+$user = "root";       // Usuario por defecto en XAMPP
+$pass = "";           // XAMPP no tiene contraseña por defecto
+$dbname = "login_system";  // Nombre de tu base de datos
 
-// Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+// Crear conexión
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+} else {
+    echo "Conexión exitosa a la base de datos 'login_system'";
 }
-
-// Establecer el conjunto de caracteres
-$conexion->set_charset("utf8");
-
-echo "Conexión exitosa";
 ?>
