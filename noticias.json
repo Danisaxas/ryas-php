@@ -1,0 +1,15 @@
+[
+    {
+      "titulo": "Noticia Importante 1",
+      "contenido": "Este es el contenido de la noticia importante. Aquí va la descripción de lo que está pasando en el mundo.",
+      "fecha": "2025-03-01",
+      "imagen": "imagen_noticia1.jpg"
+    },
+    {
+      "titulo": "Noticia Importante 2",
+      "contenido": "Este es el contenido de otra noticia. Aquí describimos otra noticia relevante.",
+      "fecha": "2025-03-02",
+      "imagen": "imagen_noticia2.jpg"
+    }
+  ]
+  
