@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Estilo Wikipedia</title>
+    <style>
+        /* CSS para la estructura y estilo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+        }
+
+        /* Estilo para el contenedor principal */
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            width: 200px;
+            background-color: #e6e6e6;
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            padding: 8px 0;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            color: #0078d4;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: white;
+            margin-left: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .main-content h3 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        /* Estilo para enlaces en el contenido */
+        .main-content a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo para el botón de interactividad */
+        .btn-interactive {
+            background-color: #0078d4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-interactive:hover {
+            background-color: #0056a3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header de la página -->
+    <header>
+        <h1>Mi Página Estilo Wikipedia</h1>
+    </header>
+
+    <div class="container">
+        <!-- Barra lateral de navegación -->
+        <div class="sidebar">
+            <h3>Menú de Navegación</h3>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Artículos</a></li>
+                <li><a href="#">Noticias</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <h2>Bienvenido a Mi Página</h2>
+            <p>Esta es una página ejemplo que tiene un diseño similar al de Wikipedia. La estructura es bastante común en sitios web que contienen mucha información organizada en secciones. A continuación, encontrarás más detalles sobre lo que puedes hacer con este diseño.</p>
+
+            <h3>¿Qué es este sitio?</h3>
+            <p>Este sitio está diseñado para mostrar cómo puedes crear una página similar a Wikipedia. Tiene una barra lateral para la navegación, un área principal para el contenido y un pie de página con información adicional.</p>
+
+            <h3>Características</h3>
+            <ul>
+                <li><strong>Menú de navegación:</strong> Permite acceder rápidamente a diferentes secciones.</li>
+                <li><strong>Contenido estructurado:</strong> Las secciones están bien definidas para mejorar la experiencia del usuario.</li>
+                <li><strong>Interactividad:</strong> Puedes agregar funcionalidades interactivas con JavaScript.</li>
+            </ul>
+
+            <button class="btn-interactive" onclick="showMessage()">Haz clic para más información</button>
+            <p id="infoMessage" style="margin-top: 20px;"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mi Página Estilo Wikipedia | Todos los derechos reservados</p>
+    </footer>
+
+    <!-- JavaScript para interactividad -->
+    <script>
+        function showMessage() {
+            document.getElementById("infoMessage").textContent = "¡Gracias por interactuar con nuestra página! Aquí puedes agregar más funcionalidades interactivas.";
+        }
+    </script>
+</body>
+</html>
