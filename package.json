@@ -1,17 +1,13 @@
 {
     "name": "node-app",
     "version": "1.0.0",
-    "description": "Node.js app with MySQL",
-    "main": "app.js",
     "scripts": {
-      "start": "node app.js"
+      "start": "node app.js",
+      "build": "yarn install"
     },
     "dependencies": {
       "express": "^4.17.1",
       "mysql2": "^2.3.3"
-    },
-    "devDependencies": {},
-    "author": "",
-    "license": "ISC"
+    }
   }
   
