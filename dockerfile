@@ -1,22 +1,14 @@
-# Usa una imagen base oficial de PHP con Apache
-FROM php:7.4-apache
+# Usa la imagen oficial de PHP con Apache
+FROM php:8.2-apache
 
-# Instala las dependencias necesarias (ajusta según tu aplicación)
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+# Instala extensiones necesarias para MySQL
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copia los archivos de tu proyecto a la imagen Docker
+# Copia los archivos del proyecto al contenedor
 COPY . /var/www/html/
 
-# Establece el directorio de trabajo
-WORKDIR /var/www/html/
-
-# Exponer el puerto que Apache está usando
+# Exponer el puerto 80 para el servidor web
 EXPOSE 80
 
-# Configura el comando por defecto para iniciar Apache
+# Inicia Apache en segundo plano
 CMD ["apache2-foreground"]
